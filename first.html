@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signup form</title>
+<link rel="icon" href="iconmale.png" type="image/gif" sizes="16x16">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+
+  background-image: url("trees.jpg");
+  
+
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  
+
+  height: 150%; 
+  
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.bg-text {
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0, 0.4); 
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 30%;
+
+  padding: 20px;
+  text-align: center;
+}
+
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 10px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+input[type=reset]{
+  background-color: limegreen;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+input[type=reset]:hover{
+  background-color: green;
+  opacity: 1;
+}
+
+textarea{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 10px 0;
+  border: none;
+  background: #f1f1f1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+}
+
+
+.btn {
+  background-color: limegreen;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  background-color: green;
+  opacity: 1;
+}
+
+#country{
+  width: 100%; 
+  opacity: 2;
+  padding: 15px;
+  margin: 5px 0 10px 0;
+  background-color:#f1f1f1 ;
+  color: gray;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<div class="bg-image"></div>
+
+<div class="bg-text">
+  <form name="myform" action="second.html" class="container" method="post" onsubmit="return validateform();">
+    <h1>Signup</h1>
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" id="Name" placeholder="Enter Name" name="name" required><br><br><br>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" id="Email" placeholder="Enter Email" name="email" required><br><br><br>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required><br><br><br>
+
+    <label for="country">Choose a country:</label>
+    <select name="country" id="country">
+    <option selected="" value="Default">(Please select a country)</option>
+    <option value="India">India</option>
+    <option value="Canada">Canada</option>
+    <option value="Australia">Australia</option>
+    <option value="Others">Others</option>
+  </select><br><br>
+
+  <label for="gender"><b>Gender:</b></label>
+  <input type="radio" id="html" name="Male">
+  <label for="html">Male</label>
+  <input type="radio" id="css" name="Female">
+  <label for="css">Female</label><br><br>
+
+    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br><br>
+
+  <textarea rows="4" cols="50" name="comment" placeholder="Enter text..."></textarea><br>
+
+    <button type="submit" class="btn">Submit</button><br><br>
+    <input type="reset" value="Reset">
+  </form>
+</div>
+
+
+<script type="text/javascript">
+  function validateform()  
+{  
+  var username=document.myform.name.value
+  var letters = /^[A-Za-z]+$/;
+  if(username.match(letters))
+    {
+    }
+  else
+    {
+      alert('Username must have alphabet characters only')
+      return false
+    }
+
+  /---------------email------------------/
+
+  var mail=document.myform.email.value;
+  var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if(mail.match(mailformat))
+  {
+  }
+  else
+  {
+    alert("You have entered an invalid email address!")
+    return false
+  }
+
+  /---------------password----------------/
+
+  var pass=document.forms["myform"]["password"].value;
+  var passw=  /^[A-Za-z]\w{7,14}$/;
+  if(pass.match(passw)) 
+    { 
+    }
+  else
+  { 
+    alert('Enter 7 to 15 characters which contain only characters, numeric digits, underscore and first character must be a letter')
+    return false
+  }
+
+  /--------------------country-------------/
+  var countries=document.myform.country.value;
+  if(countries=="Default")
+  {
+    alert('Select your country from the list');
+    return false
+  }
+  else{}
+  
+  /------------------gender-----------------/
+  var fsex=document.myform.Female;
+  var msex=document.myform.Male;
+
+  x=0;
+  if(fsex.checked) 
+  {
+    x++;
+  } 
+  if(msex.checked)
+  {
+    x++; 
+  }
+  if(x==0)
+  {
+    alert('Select Male/Female')
+    return false
+  }
+  else
+  {
+
+  }
+
+  /---------------vehicle------------------/
+
+
+  
+}  
+  
+</script>
+
+
+
+</body>
+</html>
